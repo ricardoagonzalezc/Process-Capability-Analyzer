@@ -21,3 +21,15 @@ Process Performance Index (Ppk): measures the actual long-term performannce, acc
 Mean: often referred to as the average, it is obtained by adding up all the numbers in the dataset and then dividing the sum by the total number of values in the set. 
 
 Standard Deviation (stdv): it is a measure of dispersion or variability within a dataset. It gives us an idea of how spread out the numbers in a data set are from their mean. A small stdv indicates that the data points are close to the mean, and a large stdv suggest that the data points are spread out over a wider rage. 
+
+process_capability_analyzer Architecture:
+│
+├── app.py                  # Main Streamlit app (UI + layout)
+├── spc/
+│   ├── __init__.py         # Makes it a package
+│   ├── metrics.py          # Cp, Cpk, Pp, Ppk calculations
+│   └── charts.py           # Histogram + normal curve plotting
+├── data/
+│   └── sample_data.csv     # Built-in demo dataset
+├── requirements.txt        # Dependencies
+└── README.md               # GitHub description + screenshot
