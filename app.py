@@ -5,7 +5,7 @@ from spc.metrics import calculate_metrics, get_verdict
 from spc.charts import build_histogram
 
 st.set_page_config(page_title="Process Capability Analyzer", layout="wide")
-st.title("⚙️ Process Capability Analyzer")
+st.title("Process Capability Analyzer")
 st.markdown("Upload your process data or use the built-in sample to calculate Cp, Cpk, Pp, and Ppk.")
 
 st.sidebar.header("1. Data Source")
@@ -30,7 +30,7 @@ if df is not None:
     col = df.columns[0]
     data = df[col].dropna().values
 
-    st.subheader("📋 Raw Data Preview")
+    st.subheader("Raw Data Preview")
     st.dataframe(df.head(20), use_container_width=True)
 
     if usl <= lsl:
@@ -46,7 +46,7 @@ if df is not None:
         else:
             st.error(f"{icon} Process is NOT CAPABLE — Cpk = {metrics['Cpk']}")
 
-        st.subheader("📊 Capability Metrics")
+        st.subheader("Capability Metrics")
         c1, c2, c3, c4, c5, c6 = st.columns(6)
         c1.metric("Cp",      metrics["Cp"])
         c2.metric("Cpk",     metrics["Cpk"])
@@ -55,9 +55,9 @@ if df is not None:
         c5.metric("Mean",    metrics["Mean"])
         c6.metric("Std Dev", metrics["Std Dev"])
 
-        st.subheader("📈 Distribution Chart")
+        st.subheader("Distribution Chart")
         fig = build_histogram(data.tolist(), usl, lsl)
         st.plotly_chart(fig, use_container_width=True)
 
 else:
-    st.info("👈 Select a data source in the sidebar to get started.")
+    st.info("Select a data source to get started.")
